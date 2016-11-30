@@ -1,0 +1,39 @@
+apply plugin: 'java'
+apply plugin: 'war'
+
+group = 'io.jamescross'
+version = '1.0'
+
+description = """JDBC SQL REST"""
+
+sourceCompatibility = 1.8
+targetCompatibility = 1.8
+
+repositories {
+        
+    maven { url "http://maven.restlet.com" }
+    mavenCentral()
+}
+dependencies {
+    def restletVersion = '2.3.7'
+    compile group: 'org.restlet.jse', name: 'org.restlet', version:"${restletVersion}"
+    compile group: 'org.restlet.jse', name: 'org.restlet.ext.json', version:"${restletVersion}"
+    compile group: 'org.restlet.jee', name: 'org.restlet.ext.servlet', version:"${restletVersion}"
+    compile group: 'log4j', name: 'log4j', version:'1.2.16'
+    compile group: 'org.apache.commons', name: 'commons-lang3', version:'3.0'
+    compile group: 'org.projectlombok', name: 'lombok', version:'1.12.6'
+    compile group: 'org.slf4j', name: 'slf4j-api', version:'1.7.5'
+    compile group: 'org.slf4j', name: 'slf4j-log4j12', version:'1.7.5'
+    compile group: 'org.restlet.jse', name: 'org.restlet.lib.org.json', version:'2.0'
+    compile group: 'junit', name: 'junit', version:'4.12'
+    compile group: 'org.apache.commons', name: 'commons-dbcp2', version:'2.1.1'
+    compile group: 'org.springframework', name: 'spring-jdbc', version:'4.2.2.RELEASE'
+    compile group: 'com.google.code.gson', name: 'gson', version:'2.3.1'
+    compile fileTree(dir: 'lib', include: ['*.jar'])
+}
+
+task explodedWar(type: Copy) {
+    into "$buildDir/exploded"
+    with war
+}
+war.dependsOn explodedWar
