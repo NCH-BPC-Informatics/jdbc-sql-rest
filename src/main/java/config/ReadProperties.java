@@ -14,7 +14,7 @@ public class ReadProperties {
     //Load static properties from the properties file
     private static void load() {
         try {
-            InputStream inputStream = ReadProperties.class.getResourceAsStream("/jdbc.config");
+            InputStream inputStream = ReadProperties.class.getResourceAsStream("/jdbc.properties");
 
             props = new Properties();
             props.load(inputStream);

@@ -1,5 +1,6 @@
 package endpoint;
 
+import org.apache.log4j.BasicConfigurator;
 import org.restlet.Application;
 import org.restlet.Restlet;
 import org.restlet.engine.application.CorsFilter;
@@ -13,6 +14,9 @@ import java.util.HashSet;
 public class SQLApplication extends Application {
     @Override
     public synchronized Restlet createInboundRoot() {
+        // Init Log4j - TODO: find better place
+        BasicConfigurator.configure();
+
         Router router = new Router(getContext());
 
         CorsFilter corsFilter = new CorsFilter(getContext(), router);

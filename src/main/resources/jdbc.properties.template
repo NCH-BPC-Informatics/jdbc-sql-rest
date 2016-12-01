@@ -1,0 +1,10 @@
+#
+# Configuration file for JDBC connection pooling
+#
+# NOTE: File must be named "jdbc.properties" and in a classpath folder for proper
+#       use by connection pooling system
+
+dataSourceClassName=oracle.jdbc.driver.OracleDriver
+dataSource.user=<USERNAME>
+dataSource.password=<PASSWORD>
+dataSource.URL=jdbc:oracle:thin:@<SERVER_ADDRESS>:<SERVER_PORT>:<DB_NAME>

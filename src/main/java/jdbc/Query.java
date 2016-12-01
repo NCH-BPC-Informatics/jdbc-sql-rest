@@ -27,10 +27,10 @@ public class Query {
     }
 
     private static DataSource getDs(){
-        String url = ReadProperties.getProperty("jdbcurl");
-        String user = ReadProperties.getProperty("jdbcuser");
-        String pass = ReadProperties.getProperty("jdbcpass");
-        String driver = ReadProperties.getProperty("jdbcdriver");
+        String url = ReadProperties.getProperty("dataSource.URL");
+        String user = ReadProperties.getProperty("dataSource.user");
+        String pass = ReadProperties.getProperty("dataSource.password");
+        String driver = ReadProperties.getProperty("dataSourceClassName");
 
         BasicDataSource ds = new BasicDataSource();
         ds.setUrl(url);
